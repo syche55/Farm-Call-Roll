@@ -1,26 +1,3 @@
-//jshint esversion:6
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const app = express();
-
-var jsdom = require('jsdom');
-$ = require('jquery')(new jsdom.JSDOM().window);
-var JSDOM = jsdom.JSDOM;
-
-
-app.set('view engine', 'ejs');
-
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static("public"));
-
-app.get("/", function(req, res) {
-
-  res.render("gamePage");
-
-});
-
-
 var buttonAnimals = ["cat", "pig", "cow", "dog"];
 
 var gamePattern = [];
@@ -31,18 +8,13 @@ var level = 0;
 
 var bestScore = 0;
 
-// global.document = new JSDOM(gamePage.ejs).window.document;
-
-
-// $(window.document).keypress(function() {
-//   if (!started) {
-//     $("#level-title").text("Level " + level);
-//     nextSequence();
-//     started = true;
-//   }
-// });
-
-
+$(document).keypress(function() {
+  if (!started) {
+    $("#level-title").text("Level " + level);
+    nextSequence();
+    started = true;
+  }
+});
 
 $(".btn").click(function() {
   var userChosenAnimal = $(this).attr("id");
@@ -66,8 +38,6 @@ function nextSequence() {
 
 
 function checkAnswer(currentLevel) {
-  console.log(userClickedPattern);
-  console.log(gamePattern);
   if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
     console.log("success");
 
@@ -76,7 +46,7 @@ function checkAnswer(currentLevel) {
       $("h3").text("Your best socre is: "+bestScore.toString());
       setTimeout(function() {
         nextSequence();
-      }, 2500);
+      }, 1500);
     }
   } else {
     var audio = new Audio("sounds/wrong.mp3");
@@ -92,8 +62,6 @@ function checkAnswer(currentLevel) {
 }
 
 function startOver() {
-
-
   level = 0;
   gamePattern = [];
   started = false;
@@ -110,12 +78,3 @@ function animatePress(currentAnimal) {
     $("#" + currentAnimal).removeClass("pressed");
   }, 100);
 }
-
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
-
-app.listen(port, function() {
-  console.log("Server Started Successfully");
-});
