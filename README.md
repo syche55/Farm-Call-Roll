@@ -6,4 +6,4 @@ Link: https://syche55.github.io/FarmCallRoll/
 
 ![](farmCallRollDemo.gif)
 
-⚙️⚙️⚙️New score board feature is working in progress!⚙️⚙️⚙️
+🚧 New score board feature is working in progress! 🚧
