@@ -1,4 +1,6 @@
 //jshint esversion:6
+
+
 var buttonAnimals = ["cat", "pig", "cow", "dog"];
 
 var gamePattern = [];
@@ -9,21 +11,6 @@ var level = 0;
 
 var bestScore = 0;
 
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
-const url = "https://github.com/syche55/Farm-Call-Roll/blob/master/rank.json"; // site that doesn’t send Access-Control-*
-fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
-.then(response => response.text())
-.then(contents => console.log(contents))
-.catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"));
-
-
-var ourRequest = new XMLHttpRequest();
-// ourRequest.open('POST')
-ourRequest.open('GET', '');
-ourRequest.onload = function(){
-  console.log(ourRequest.responseText);
-};
-ourRequest.send();
 
 $(document).keypress(function() {
   if (!started) {
@@ -66,7 +53,7 @@ function checkAnswer(currentLevel) {
       }, 1500);
     }
   } else {
-    var audio = new Audio("sounds/wrong.mp3");
+    var audio = new Audio("/sounds/wrong.mp3");
     audio.play();
     $("body").addClass("game-over");
     setTimeout(function() {
@@ -85,7 +72,7 @@ function startOver() {
 }
 
 function playSound(name) {
-  var audio = new Audio("sounds/" + name + ".mp3");
+  var audio = new Audio("/static/sounds/" + name + ".mp3");
   audio.play();
 }
 

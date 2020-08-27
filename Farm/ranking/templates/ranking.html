@@ -1,0 +1,32 @@
+{% load static %}
+
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Farm Guess</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+  <h1 ><br/>Score Board</h1>
+  <div>
+
+      {% for player in players %}
+        <div class="username">
+          <h3>🍼  {{ player.name }} : {{ player.score }}</h3>
+          </div>
+      {% endfor %}
+    </div>
+
+  <button class="control" type="button" name="button" onclick="location.href='{% url 'home' %}' ">Try it out!</button>
+
+  <script src="{% static 'game.js' %}" charset="utf-8"></script>
+
+  </body>
+
+  </html>

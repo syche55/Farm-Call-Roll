@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Farm Guess</title>
+  <link rel="icon" href="{% static 'images/favicon.ico' %}">
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <h1 id="level-title">Welcome to Farm Call Roll!<br/> <br/>Press A Key to Start</h1>
+  <div class="container">
+    <div class="row">
+
+      <div type="button" id="cat" class="btn cat" style="background: url({% static 'images/catImage.png' %}); background-size: 100%;">
+
+      </div>
+
+      <div type="button" id="pig" class="btn pig" style="background: url({% static 'images/pigImage.png' %}); background-size: 100%;">
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div type="button" id="cow" class="btn cow" style="background: url({% static 'images/cowImage.png' %}); background-size: 100%;">
+
+      </div>
+      <div type="button" id="dog" class="btn dog" style="background: url({% static 'images/dogImage.png' %}); background-size: 100%;">
+
+      </div>
+
+    </div>
+
+    <div class="row">
+      <h3>Your best score is: 0</h3>
+    </div>
+
+    <div class="row">
+      <button class="control" type="button" name="button" onclick="location.href='{% url 'about' %}' ">How To Play</button>
+      <button class="control" type="button" name="button" onclick="location.href='{% url 'ranking' %}' ">Score Board</button>
+
+    </div>
+
+  </div>
+<script src="{% static 'game.js' %}" charset="utf-8"></script>
+</body>
+
+</html>
